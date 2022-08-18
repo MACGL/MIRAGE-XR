@@ -1048,4 +1048,4 @@ MonoBehaviour:
       type: 3}
     id: 2
     name: Tour
-    manifest: Prefabs/Plugins/CubeNetPlugin/Tour
+    manifest: Prefabs/Plugins/Tour/Tour

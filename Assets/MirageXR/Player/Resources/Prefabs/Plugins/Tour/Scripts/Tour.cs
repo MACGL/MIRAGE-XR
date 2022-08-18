@@ -151,21 +151,15 @@ public class Tour : MonoBehaviour
 
     #endregion
 
-    private void SetFloors(bool edited = false)
+    private void SetFloors()
     {
         string[] floorDescriptions = new string[currentModel.floorHeights.Count];
-        if (edited)
-        {
-            int parsedInt;
-            if(int.TryParse(inputFloors.text, out parsedInt))
-                floorDescriptions = new string[parsedInt];
-        }
 
-        for (int i = 0; i < currentModel.floorHeights.Count; i++)
+        for (int i = 0; i < floorDescriptions.Length; i++)
         {
             if (i == 0)
                 floorDescriptions[i] = $"Erdgeschoss";
-            else if (i == currentModel.floorHeights.Count - 1)
+            else if (i == floorDescriptions.Length - 1)
                 floorDescriptions[i] = $"Dachgeschoss";
             else
                 floorDescriptions[i] = $"{i}. Etage";
@@ -177,7 +171,7 @@ public class Tour : MonoBehaviour
     private void FloorChanged(int value)
     {
         Vector3 currentPos = Camera.main.transform.position;
-        Camera.main.transform.position = new Vector3(currentPos.x, currentModel.floorHeights[value], currentPos.z);
+        //Camera.main.transform.position = new Vector3(currentPos.x, currentModel.floorHeights[value], currentPos.z);
     }
 
     private void SetInputfields()
@@ -206,9 +200,14 @@ public class Tour : MonoBehaviour
         if (floors < currentModel.floorHeights.Count)
             currentModel.floorHeights = currentModel.floorHeights.Take(floors).ToList();
         else if(floors > currentModel.floorHeights.Count)
-            for (int i = 0; i <= floors - currentModel.floorHeights.Count; i++)
+        {
+            int difference = floors - currentModel.floorHeights.Count;
+            for (int i = 0; i < difference; i++)
+            {
                 currentModel.floorHeights.Add(0);
-
+            }
+        }
+       
         tourData.models[modelsDropdown.value] = currentModel;
         SetFloors();
         DataHandler.SetData(tourData);
