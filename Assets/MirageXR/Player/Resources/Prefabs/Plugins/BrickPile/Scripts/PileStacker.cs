@@ -56,8 +56,8 @@ public class PileStacker : MonoBehaviour
         for (int i = 0; i < maxZCount; i++)
             for(int j = 0; j < maxXCount; j++)
             {
-                GameObject g = Instantiate(brickPreFab, new Vector3(j * remapX + remapX / 2, 0, i * remapZ + remapZ / 2), Quaternion.identity);
-                g.transform.parent = container.transform;
+                GameObject g = Instantiate(brickPreFab, container.transform);
+                g.transform.localPosition = new Vector3(j * remapX + remapX / 2, 0, i * remapZ + remapZ / 2);
                 g.SetActive(false);
                 spawnedBricksArray[i * maxXCount + j] = g;
             }
@@ -74,10 +74,10 @@ public class PileStacker : MonoBehaviour
 
         CreateCube(pileCount, yCount);
 
-        container.transform.position = new Vector3(pileCount + pileCount * margin + (yCount % 2 == 0 ? 1 : 0), 
+        container.transform.localPosition = new Vector3(pileCount + pileCount * margin + (yCount % 2 == 0 ? 1 : 0), 
             (float)yCount / maxYCount + brickPreFab.transform.localScale.y / 2, 
             0);
-        container.transform.rotation = yCount % 2 == 0 ? Quaternion.Euler(0, -90, 0) : Quaternion.identity;
+        container.transform.localRotation = yCount % 2 == 0 ? Quaternion.Euler(0, -90, 0) : Quaternion.identity;
 
         currentPhysicalBricks = zCount * maxXCount + xCount;
         if (propertyBlock == null)
