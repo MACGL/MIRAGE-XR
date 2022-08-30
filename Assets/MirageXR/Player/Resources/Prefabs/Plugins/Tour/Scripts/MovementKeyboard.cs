@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MovementKeyboard : TourMovement
 {
-    private Vector2 lastPosition;
-    private Vector2 currentPosition;
-    private Vector2 deltaPosition;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -17,13 +13,13 @@ public class MovementKeyboard : TourMovement
     protected override void Update()
     {
         Movement = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.Keypad8))
             Movement.z = -1;
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.Keypad2))
             Movement.z = 1;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.Keypad4))
             Movement.x = 1;
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.Keypad6))
             Movement.x = -1;
 
         base.Update();

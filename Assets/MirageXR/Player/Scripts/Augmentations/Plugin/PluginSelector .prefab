@@ -1049,3 +1049,9 @@ MonoBehaviour:
     id: 2
     name: BrickPile
     manifest: Prefabs/Plugins/BrickPile/BrickPile
+  - icon: {fileID: 2800000, guid: 86e750498ff0eb04498e4d46e2cec66a, type: 3}
+    pluginPrefab: {fileID: 5210778255086345035, guid: c15eb34041708384391b0a57c497bbf2,
+      type: 3}
+    id: 3
+    name: Tour
+    manifest: Prefabs/Plugins/Tour/Tour

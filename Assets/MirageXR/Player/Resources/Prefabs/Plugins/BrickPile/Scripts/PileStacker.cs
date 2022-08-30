@@ -38,7 +38,6 @@ public class PileStacker : MonoBehaviour
     private GameObject[] spawnedBricksArray;
     private int lastFrameBricks = 0;
     private int currentPhysicalBricks;
-    private MaterialPropertyBlock propertyBlock;
 
     private void Start()
     {
@@ -80,8 +79,6 @@ public class PileStacker : MonoBehaviour
         container.transform.localRotation = yCount % 2 == 0 ? Quaternion.Euler(0, -90, 0) : Quaternion.identity;
 
         currentPhysicalBricks = zCount * maxXCount + xCount;
-        if (propertyBlock == null)
-            propertyBlock = new MaterialPropertyBlock();
 
         for (int i = 0; i < spawnedBricksArray.Length; i++)
         {
@@ -89,9 +86,8 @@ public class PileStacker : MonoBehaviour
             {
                 if (!spawnedBricksArray[i].activeSelf)
                 {
-                    propertyBlock.SetFloat("_Run", lastFrameBricks < newValue ? 1f : 0f);
-                    propertyBlock.SetFloat("_CurrentTime", Time.time);
-                    spawnedBricksArray[i].GetComponentInChildren<MeshRenderer>().SetPropertyBlock(propertyBlock);
+                    spawnedBricksArray[i].GetComponentInChildren<MeshRenderer>().material.SetFloat("_Run", lastFrameBricks < newValue ? 1f : 0f);
+                    spawnedBricksArray[i].GetComponentInChildren<MeshRenderer>().material.SetFloat("_CurrentTime", Time.time);
                 }
                 spawnedBricksArray[i].SetActive(true);
             }
