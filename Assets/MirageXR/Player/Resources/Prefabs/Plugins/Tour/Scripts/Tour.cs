@@ -28,6 +28,7 @@ public class Tour : MonoBehaviour
     [SerializeField] private TourData tourData;
 
     public Transform contentContainer;
+    [SerializeField] private float CalibrationSpeed;
 
     private bool calibrating;
 
@@ -74,11 +75,15 @@ public class Tour : MonoBehaviour
 
     private void Update()
     {
-        if(calibrating)
+        if (calibrating)
         {
-            if (Input.mouseScrollDelta.y != 0)
+            if (Input.GetKey(KeyCode.Keypad9))
             {
-                Camera.main.transform.position += Vector3.up * Input.mouseScrollDelta.y;
+                contentContainer.position -= Vector3.up * CalibrationSpeed;
+            }
+            if(Input.GetKey(KeyCode.Keypad3))
+            {
+                contentContainer.position += Vector3.up * CalibrationSpeed;
             }
         }
     }
@@ -108,7 +113,7 @@ public class Tour : MonoBehaviour
             floorsDropdown.interactable = true;
 
             calibrateButton.GetComponentInChildren<TMP_Text>().text = "Calibrate";
-            tourData.models[modelsDropdown.value].floorHeights[floorsDropdown.value] = Camera.main.transform.position.y;
+            tourData.models[modelsDropdown.value].floorHeights[floorsDropdown.value] = contentContainer.position.y;
             DataHandler.SetData(tourData);
             calibrating = false;
         }
@@ -170,8 +175,8 @@ public class Tour : MonoBehaviour
 
     private void FloorChanged(int value)
     {
-        Vector3 currentPos = Camera.main.transform.position;
-        //Camera.main.transform.position = new Vector3(currentPos.x, currentModel.floorHeights[value], currentPos.z);
+        Vector3 currentPos = contentContainer.position;
+        contentContainer.position = new Vector3(currentPos.x, currentModel.floorHeights[value], currentPos.z);
     }
 
     private void SetInputfields()
