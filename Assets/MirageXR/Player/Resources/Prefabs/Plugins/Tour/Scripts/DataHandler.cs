@@ -6,20 +6,23 @@ using UnityEngine.Android;
 
 public static class DataHandler
 {
+    private static string dataPath = "Assets/MirageXR/Player/Resources/Prefabs/Plugins/Tour/Settings";
+
     public static T GetData<T>()
         where T : new()
     {
         Permission.RequestUserPermissions(new string[] { Permission.ExternalStorageWrite, Permission.ExternalStorageRead });
-        if (!Directory.Exists(Application.persistentDataPath))
-            Directory.CreateDirectory(Application.persistentDataPath);
+        if (!Directory.Exists(dataPath))
+            Directory.CreateDirectory(dataPath);
         if (!File.Exists(GetFileFromType<T>()))
             File.WriteAllText(GetFileFromType<T>(), JsonUtility.ToJson(new T()));
+        Debug.Log(dataPath);
         return SerializeJson<T>(File.ReadAllText(GetFileFromType<T>()));
     }
 
     private static string GetFileFromType<T>()
     {
-        return Path.Combine(Application.persistentDataPath, typeof(T).Name);
+        return Path.Combine(dataPath, typeof(T).Name);
     }
 
     public static void SetData<T>(T data)
