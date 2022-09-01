@@ -3,6 +3,7 @@ using TMPro;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine.UI;
 
 public class Tour : MonoBehaviour
@@ -52,6 +53,7 @@ public class Tour : MonoBehaviour
 
     private void Start()
     {
+        GetComponentInParent<ObjectManipulator>().enabled = false;
         tourData = DataHandler.GetData<TourData>();
 
         modelsDropdown.ClearOptions();

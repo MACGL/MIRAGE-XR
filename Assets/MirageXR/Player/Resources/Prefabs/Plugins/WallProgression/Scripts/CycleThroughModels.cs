@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
 
 public class CycleThroughModels : MonoBehaviour
@@ -11,14 +12,12 @@ public class CycleThroughModels : MonoBehaviour
     // Start is called before the first frame update
     private IEnumerator Start()
     {
+        GetComponentInParent<ObjectManipulator>().enabled = false;
         for (int i = 1; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        transform.localScale = new Vector3(1/transform.lossyScale.x, 
-                                            1/transform.lossyScale.y, 
-                                            1/transform.lossyScale.z);
         YieldInstruction wait = new WaitForSeconds(tickTime);
         while (true)
         {
