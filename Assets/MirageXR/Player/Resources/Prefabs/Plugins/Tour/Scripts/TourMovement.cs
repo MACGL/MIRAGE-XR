@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Tour))]
 public class TourMovement : MonoBehaviour
 {
     protected Vector3 Movement = new Vector3();
@@ -14,8 +13,10 @@ public class TourMovement : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (Movement == Vector3.zero) return;
+        
         TranslatedMovement = Direction * Movement.y + Quaternion.Euler(0, 90, 0) * Direction * Movement.x;
         TranslatedMovement.y = 0;
-        Tour.Singleton.contentContainer.Translate(TranslatedMovement.normalized * Speed);
+        Tour.Singleton.contentContainer?.Translate(TranslatedMovement.normalized * Speed);
     }
 }
