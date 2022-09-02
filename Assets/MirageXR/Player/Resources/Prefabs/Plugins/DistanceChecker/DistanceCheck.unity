@@ -814,7 +814,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &2074542146
+--- !u!21 &2019719533
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -823,7 +823,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 'distanceCheckerMaterial
 
-    -94042'
+    -168448'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -859,7 +859,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2074542146}
+      objectReference: {fileID: 2019719533}
     - target: {fileID: 7659410222797196592, guid: 74a8cbd7da36c2d419fd5ec027a0b349,
         type: 3}
       propertyPath: m_RootOrder
@@ -914,26 +914,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061342706753821070, guid: 74a8cbd7da36c2d419fd5ec027a0b349,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061342706753821070, guid: 74a8cbd7da36c2d419fd5ec027a0b349,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8061342706753821070, guid: 74a8cbd7da36c2d419fd5ec027a0b349,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.ctime1
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061342706753821070, guid: 74a8cbd7da36c2d419fd5ec027a0b349,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.m_Mode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9054350498967489631, guid: 74a8cbd7da36c2d419fd5ec027a0b349,
         type: 3}
