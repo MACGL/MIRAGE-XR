@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class QRDistanceCheck : MonoBehaviour
@@ -18,19 +14,27 @@ public class QRDistanceCheck : MonoBehaviour
 
     private RayResult[] raycasts = new RayResult[0];
     private int shortest = -1;
+    private LineRenderer _lineRend;
 
     [SerializeField] private TMP_Text textDistance;
+
+    private void Start()
+    {
+        _lineRend = GetComponent<LineRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        textDistance.canvas.transform.position = transform.position + Vector3.up * .3f; 
+        if(!_lineRend.enabled)
+            _lineRend.enabled = true;
+
+        textDistance.canvas.transform.position = transform.position + Vector3.up * .1f; 
 
         if ((circleCount * circleDensity + 1) * 2 != raycasts.Length)
             raycasts = new RayResult[(circleCount * circleDensity + 1) * 2];
 
         shortest = -1;
-        textDistance.text = "0.0000";
 
         RaycastDrawDebug(transform.position, transform.up, raycasts.Length / 2 - 1);
         RaycastDrawDebug(transform.position, -transform.up, raycasts.Length - 1);
@@ -55,8 +59,19 @@ public class QRDistanceCheck : MonoBehaviour
             {
                 color = Color.green;
                 textDistance.text = raycasts[i].trueDistance.ToString("0.0000");
+                _lineRend.SetPositions(new Vector3[] { transform.position, raycasts[i].ray.origin + raycasts[i].ray.direction * raycasts[i].trueDistance });
+                _lineRend.startColor = Color.green;
+                _lineRend.endColor = Color.green;
             }
             Debug.DrawRay(raycasts[i].ray.origin, raycasts[i].ray.direction.normalized * rayDistance, color, 0);
+        }
+
+        if (shortest == -1)
+        {
+            textDistance.text = "0.0000";
+            _lineRend.SetPositions(new Vector3[] { transform.position, transform.position + transform.up * rayDistance });
+            _lineRend.startColor = Color.red;
+            _lineRend.endColor = Color.red;
         }
     }
 
