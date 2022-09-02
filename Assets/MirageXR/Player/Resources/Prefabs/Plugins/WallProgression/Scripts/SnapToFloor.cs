@@ -14,7 +14,7 @@ public class SnapToFloor : MonoBehaviour
     void PlaceOnFloor()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(transform.position + Vector3.up * 10f, Vector3.down);
         if (Physics.Raycast(ray, out hit, 10000, lm))
         {
             transform.position = hit.point;

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8741134608145507583}
   - component: {fileID: -7550047190389788714}
   - component: {fileID: 749055319368325899}
+  - component: {fileID: -8637038647775540788}
+  - component: {fileID: 418444948354955897}
   m_Layer: 0
   m_Name: Bricks
   m_TagString: Untagged
@@ -140,8 +142,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: -7111662641735350022, guid: 7d320eefd79b2aa4f8c8a5e40e568d2a,
-    type: 3}
+  constraintsManager: {fileID: -7550047190389788714}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -155,3 +156,30 @@ MonoBehaviour:
   onHoverExited:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-8637038647775540788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361200622232541448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32477e7a3d514df488544867496fd73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 0.5
+--- !u!114 &418444948354955897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361200622232541448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5df7a2c3b5b4843bdc23997f95edc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handType: -1
+  proximityType: -1
