@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class QRDistanceCheck : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class QRDistanceCheck : MonoBehaviour
 
     [SerializeField, Range(0, 20)] private float _scanAngle;
     [SerializeField, Range(0, 2)] private float rayDistance;
-
+    
     private RayResult[] raycasts = new RayResult[0];
     private int shortest = -1;
     private LineRenderer _lineRend;
