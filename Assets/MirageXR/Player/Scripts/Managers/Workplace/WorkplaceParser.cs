@@ -11,9 +11,9 @@ namespace MirageXR
         private const string JSON_EXCEPTION = ".json";
         private const char SLASH_CHAR = '/';
 
-        public static Workplace Parse(string workplaceId)
+        public static Workplace Parse(string workplaceId, string projectPath = null)
         {
-            var json = GetWorkplaceJson(workplaceId);
+            var json = GetWorkplaceJson(workplaceId, projectPath);
             return  JsonConvert.DeserializeObject<Workplace>(json);
         }
 
@@ -22,7 +22,7 @@ namespace MirageXR
             return JsonConvert.SerializeObject(workplace);
         }
 
-        private static string GetWorkplaceJson(string activityId)
+        private static string GetWorkplaceJson(string activityId, string projectPath = null)
         {
             if (activityId.StartsWith(RESOURCES_PREFIX))
             {
@@ -42,7 +42,7 @@ namespace MirageXR
                 activityId += JSON_EXCEPTION;
             }
 
-            var path = Path.Combine(Application.persistentDataPath, activityId);
+            var path = Path.Combine(projectPath == null ? Application.persistentDataPath : projectPath, activityId);
             return File.Exists(path) ? File.ReadAllText(path) : null;
         }
     }
