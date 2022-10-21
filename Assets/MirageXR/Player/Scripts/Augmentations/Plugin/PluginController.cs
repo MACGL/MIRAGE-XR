@@ -51,7 +51,7 @@ namespace MirageXR
             plugin = Instantiate(Resources.Load<GameObject>(path), Vector3.zero, Quaternion.identity);
 
             plugin.transform.parent = gameObject.transform; // pluginParent;
-            plugin.transform.localPosition = new Vector3(0, 1, 0);
+            plugin.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
 }

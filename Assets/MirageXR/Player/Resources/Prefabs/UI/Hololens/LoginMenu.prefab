@@ -5013,7 +5013,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 20
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6929408413214887807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5194,10 +5194,6 @@ MonoBehaviour:
   rememberLogin: {fileID: 3841274857083228225}
   moodleForumID: 89
   lrsPanel: {fileID: 215599879135690539}
-  lrsURL: {fileID: 0}
-  lrsAccessToken: {fileID: 0}
-  xApiVersion: {fileID: 0}
-  mirageXRServiceBootstrapper: {fileID: 0}
   status: {fileID: 3062048645611650575}
 --- !u!1 &6971946857926650910
 GameObject:
@@ -5266,7 +5262,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Select LRS:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
