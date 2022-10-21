@@ -62,7 +62,7 @@ namespace MirageXR
         /// Called from the event manager.
         /// </summary>
         /// <param name="workplaceId">ID of the workplace file JSON file.</param>
-        public async Task LoadWorkplace(string workplaceId)
+        public async Task LoadWorkplace(string workplaceId, string projectPath = null)
         {
             InitContainers();
             
@@ -76,7 +76,7 @@ namespace MirageXR
             {
                 try
                 {
-                    workplace = WorkplaceParser.Parse(workplaceId);
+                    workplace = WorkplaceParser.Parse(workplaceId, projectPath);
                 }
                 catch (Exception e)
                 {

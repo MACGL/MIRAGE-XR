@@ -140,18 +140,20 @@ namespace MirageXR
 			};
 		}
 
-		public async Task LoadActivity(string activityId)
+		public async Task LoadActivity(string activityId, string projectPath = null)
 		{
-			var activity = string.IsNullOrEmpty(activityId) ? CreateEmptyActivity() : ActivityParser.Parse(activityId);
+			Debug.Log($"[Nick] {activityId} {projectPath}");
+			var activity = string.IsNullOrEmpty(activityId) ? CreateEmptyActivity() : ActivityParser.Parse(activityId, projectPath);
 			_activityUrl = activityId;
-      
+
+			Debug.Log($"[Nick] {activity.name}");
 			//Always load an existing activity in play mode
 			EditModeActive = false;
 
-			await ActivateActivity(activity);
+			await ActivateActivity(activity, projectPath);
 		}
 
-		private async Task ActivateActivity(Activity activity)
+		private async Task ActivateActivity(Activity activity, string projectPath = null)
 		{
 			EventManager.ClearAll();
 			await Task.Delay(100);
@@ -162,14 +164,14 @@ namespace MirageXR
 
 			EventManager.DebugLog($"Activity manager: {_activity.id} parsed.");
 
-			ActivityPath = Path.Combine(Application.persistentDataPath, _activity.id);
+			ActivityPath = Path.Combine(projectPath == null ? Application.persistentDataPath : projectPath, _activity.id);
 
 			if (IsNeedToRestore(activity, out var restoreId))
 			{
 				_activityRestorer.RestoreActions(activity, restoreId);
 			}
 
-			await RootObject.Instance.workplaceManager.LoadWorkplace(_activity.workplace);
+			await RootObject.Instance.workplaceManager.LoadWorkplace(_activity.workplace, projectPath);
 
 			await StartActivity();
 			IsReady = true;
