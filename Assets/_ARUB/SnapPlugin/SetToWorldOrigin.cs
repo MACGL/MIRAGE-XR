@@ -29,6 +29,7 @@ public class SetToWorldOrigin : MonoBehaviour
         rotationOffset = Quaternion.Euler(rotationOffsetEuler);
         _startOffset = offset;
         _startRotationOffset = rotationOffsetEuler;
+        transform.localRotation = Quaternion.identity;
     }
 
     private void Update()

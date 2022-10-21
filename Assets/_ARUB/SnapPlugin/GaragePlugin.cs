@@ -10,7 +10,7 @@ public class GaragePlugin : MonoBehaviour
     [SerializeField] private SnapModelMenu snapModelMenuPrefab;
     
     private SetToWorldOrigin _setToWorldOrigin;
-    private SnapModelMenu snapModelMenuInstance;
+    private SnapModelMenu _snapModelMenuInstance;
     void Awake()
     {
         _setToWorldOrigin = GetComponent<SetToWorldOrigin>();
@@ -18,8 +18,8 @@ public class GaragePlugin : MonoBehaviour
 
     private void Start()
     {
-        snapModelMenuInstance = Instantiate(snapModelMenuPrefab, GameObject.Find("Things").transform);
-        snapModelMenuInstance.ToWorldOrigin = _setToWorldOrigin;
+        _snapModelMenuInstance = Instantiate(snapModelMenuPrefab, GameObject.Find("Things").transform);
+        _snapModelMenuInstance.ToWorldOrigin = _setToWorldOrigin;
         OnEditModeChanged(RootObject.Instance.activityManager.EditModeActive);
     }
 
@@ -30,11 +30,16 @@ public class GaragePlugin : MonoBehaviour
 
     private void OnEditModeChanged(bool editModeActive)
     {
-        snapModelMenuInstance.gameObject.SetActive(editModeActive);
+        _snapModelMenuInstance.gameObject.SetActive(editModeActive);
     }
 
     private void OnDisable()
     {
         EventManager.OnEditModeChanged -= OnEditModeChanged;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(_snapModelMenuInstance.gameObject);
     }
 }

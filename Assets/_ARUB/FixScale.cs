@@ -21,11 +21,5 @@ public class FixScale : MonoBehaviour
         transform.parent = null;
         transform.localScale = scale;
         transform.SetParent(parent);
-        Debug.LogWarning(transform.lossyScale);
-        // transform.localScale = scale * 2f;
-        // if (transform.lossyScale == scale) return;
-        // transform.localScale = new Vector3(1/transform.lossyScale.x, 
-        //     1/transform.lossyScale.y, 
-        //     1/transform.lossyScale.z).Mul(scale);
     }
 }
