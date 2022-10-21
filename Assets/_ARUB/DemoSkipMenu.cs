@@ -1,4 +1,4 @@
-using MirageXR;
+    using MirageXR;
 using System.IO;
 using UnityEngine;
 
@@ -16,6 +16,6 @@ public class DemoSkipMenu : MonoBehaviour
     private async void LoadActivity()
     {
         await RootObject.Instance.editorSceneService.LoadEditorAsync();
-        await activityManager.LoadActivity(activityId, Path.Combine(Application.dataPath, "_ARUB", "Demo"));
+        await activityManager.LoadActivity(activityId, Path.Combine(Application.streamingAssetsPath, "Demo"));
     }
 }
