@@ -10,6 +10,7 @@ public class PictureView : MonoBehaviour
 
     private void Start()
     {
+        transform.localRotation = Quaternion.identity;
         OnEditModeChanged(RootObject.Instance.activityManager.EditModeActive);
     }
 
