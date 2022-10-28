@@ -11,17 +11,19 @@ public class DemoSkipMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string path = Path.Combine(Application.persistentDataPath, session);
-
-        if (!Directory.Exists(path))
+        if(session != "")
         {
-            Directory.CreateDirectory(path);
-            TextAsset activity = Resources.Load(session + "-activity") as TextAsset;
-            File.WriteAllText(path + "-activity.json", activity.text);
+            string path = Path.Combine(Application.persistentDataPath, session);
 
-            TextAsset workplace = Resources.Load(session + "-workplace") as TextAsset;
-            File.WriteAllText(path + "-workplace.json", workplace.text);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+                TextAsset activity = Resources.Load(session + "-activity") as TextAsset;
+                File.WriteAllText(path + "-activity.json", activity.text);
+
+                TextAsset workplace = Resources.Load(session + "-workplace") as TextAsset;
+                File.WriteAllText(path + "-workplace.json", workplace.text);
+            }
         }
-      
     }
-}
+}   

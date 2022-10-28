@@ -38,6 +38,7 @@ namespace MirageXR
             PoiEditor myPoiEditor = transform.parent.gameObject.GetComponent<PoiEditor>();
             Vector3 defaultScale = new Vector3(0.5f, 0.5f, 0.5f);
             transform.parent.localScale = GetPoiScale(myPoiEditor, defaultScale);
+            transform.parent.localRotation = Quaternion.Euler(GetPoiRotation(myPoiEditor));
 
             // If everything was ok, return base result.
             return base.Init(obj);
