@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class DemoSkipMenu : MonoBehaviour
 {
-    [SerializeField] private string activityId;
     private ActivityManager activityManager => RootObject.Instance.activityManager;
+
+    [SerializeField] private string session;
 
     // Start is called before the first frame update
     void Start()
     {
-        LoadActivity();
-    }
+        string path = Path.Combine(Application.persistentDataPath, session);
 
-    private async void LoadActivity()
-    {
-        await RootObject.Instance.editorSceneService.LoadEditorAsync();
-        await activityManager.LoadActivity(activityId, Path.Combine(Application.streamingAssetsPath, "Demo"));
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+            TextAsset activity = Resources.Load(session + "-activity") as TextAsset;
+            File.WriteAllText(path + "-activity.json", activity.text);
+
+            TextAsset workplace = Resources.Load(session + "-workplace") as TextAsset;
+            File.WriteAllText(path + "-workplace.json", workplace.text);
+        }
+      
     }
 }
