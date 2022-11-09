@@ -13,7 +13,7 @@ namespace MirageXR
 
         public SpriteToggle SpriteToggle => toggleLock;
 
-        public bool IsMoveable { get => objectManipulator.enabled; set => objectManipulator.enabled = value; }
+        public bool IsMoveable { get => objectManipulator.enabled; set => objectManipulator.enabled = true; }
 
         private void Start()
         {
